@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD013004-1151-4192-8915-62AC121C0B38}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HostelManagementSystem</RootNamespace>
+    <AssemblyName>HostelManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admindashboard.aspx" />
+    <Content Include="adminDisplay.aspx" />
+    <Content Include="buyLaundry.aspx" />
+    <Content Include="chat1.aspx" />
+    <Content Include="cmr.jpg" />
+    <Content Include="Copy of cmr2.jpeg" />
+    <Content Include="Copy of dining.jpg" />
+    <Content Include="Copy of hostel bedroom1.jpg" />
+    <Content Include="Copy of image1.jpg" />
+    <Content Include="Copy of rohit.jpg" />
+    <Content Include="Copy of room.jpg" />
+    <Content Include="dashbord.aspx" />
+    <Content Include="dining.jpg" />
+    <Content Include="displayemployee.aspx" />
+    <Content Include="displayPayment.aspx" />
+    <Content Include="employee.aspx" />
+    <Content Include="employeeChat.aspx" />
+    <Content Include="employeedashboard.aspx" />
+    <Content Include="employeeuser.aspx" />
+    <Content Include="employee_payment.aspx" />
+    <Content Include="generatecoupan.aspx" />
+    <Content Include="image1.jpg" />
+    <Content Include="monthlycoupon.aspx" />
+    <Content Include="ROHIT KUMAR paytm qr code.jpeg" />
+    <Content Include="rohit.jpg" />
+    <Content Include="room.jpg" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="signin.aspx" />
+    <Content Include="spaydisplay.aspx" />
+    <Content Include="startapp.aspx" />
+    <Content Include="studentchat.aspx" />
+    <Content Include="studentdetails.aspx" />
+    <Content Include="studentPage.aspx" />
+    <Content Include="studentpay.aspx" />
+    <Content Include="student_pic\20220714_171325.jpg" />
+    <Content Include="student_pic\453736.jpg" />
+    <Content Include="student_pic\back.bmp" />
+    <Content Include="student_pic\coupan.jpg" />
+    <Content Include="student_pic\FIREWALL BASING IMAGE.jpg" />
+    <Content Include="student_pic\male.jpg" />
+    <Content Include="student_pic\papa_pages-to-jpg-0001.jpg" />
+    <Content Include="student_pic\papa_pages-to-jpg-0002.jpg" />
+    <Content Include="student_pic\payment.jpeg" />
+    <Content Include="student_pic\Refrigrater1.jpg" />
+    <Content Include="student_pic\rose-oled-8k-8v.jpg" />
+    <Content Include="student_pic\salary.jpg" />
+    <Content Include="student_pic\shree1.jpg" />
+    <Content Include="student_pic\WhatsApp Image 2023-04-19 at 3.00.12 PM.jpeg" />
+    <Content Include="student_pic\WhatsApp Image 2023-08-21 at 1.06.27 PM.jpeg" />
+    <Content Include="stu_emp_dashbord.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="userdetails.aspx" />
+    <Content Include="useStudetCoupon.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admindashboard.aspx.cs">
+      <DependentUpon>admindashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admindashboard.aspx.designer.cs">
+      <DependentUpon>admindashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminDisplay.aspx.cs">
+      <DependentUpon>adminDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminDisplay.aspx.designer.cs">
+      <DependentUpon>adminDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="buyLaundry.aspx.cs">
+      <DependentUpon>buyLaundry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="buyLaundry.aspx.designer.cs">
+      <DependentUpon>buyLaundry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chat1.aspx.cs">
+      <DependentUpon>chat1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chat1.aspx.designer.cs">
+      <DependentUpon>chat1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashbord.aspx.cs">
+      <DependentUpon>dashbord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashbord.aspx.designer.cs">
+      <DependentUpon>dashbord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="displayemployee.aspx.cs">
+      <DependentUpon>displayemployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="displayemployee.aspx.designer.cs">
+      <DependentUpon>displayemployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="displayPayment.aspx.cs">
+      <DependentUpon>displayPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="displayPayment.aspx.designer.cs">
+      <DependentUpon>displayPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employee.aspx.cs">
+      <DependentUpon>employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employee.aspx.designer.cs">
+      <DependentUpon>employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employeeChat.aspx.cs">
+      <DependentUpon>employeeChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employeeChat.aspx.designer.cs">
+      <DependentUpon>employeeChat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employeedashboard.aspx.cs">
+      <DependentUpon>employeedashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employeedashboard.aspx.designer.cs">
+      <DependentUpon>employeedashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employeeuser.aspx.cs">
+      <DependentUpon>employeeuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employeeuser.aspx.designer.cs">
+      <DependentUpon>employeeuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employee_payment.aspx.cs">
+      <DependentUpon>employee_payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employee_payment.aspx.designer.cs">
+      <DependentUpon>employee_payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="generatecoupan.aspx.cs">
+      <DependentUpon>generatecoupan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="generatecoupan.aspx.designer.cs">
+      <DependentUpon>generatecoupan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="monthlycoupon.aspx.cs">
+      <DependentUpon>monthlycoupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="monthlycoupon.aspx.designer.cs">
+      <DependentUpon>monthlycoupon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="signin.aspx.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signin.aspx.designer.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="spaydisplay.aspx.cs">
+      <DependentUpon>spaydisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="spaydisplay.aspx.designer.cs">
+      <DependentUpon>spaydisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="startapp.aspx.cs">
+      <DependentUpon>startapp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="startapp.aspx.designer.cs">
+      <DependentUpon>startapp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="studentchat.aspx.cs">
+      <DependentUpon>studentchat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentchat.aspx.designer.cs">
+      <DependentUpon>studentchat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="studentdetails.aspx.cs">
+      <DependentUpon>studentdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentdetails.aspx.designer.cs">
+      <DependentUpon>studentdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="studentPage.aspx.cs">
+      <DependentUpon>studentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentPage.aspx.designer.cs">
+      <DependentUpon>studentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="studentpay.aspx.cs">
+      <DependentUpon>studentpay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentpay.aspx.designer.cs">
+      <DependentUpon>studentpay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stu_emp_dashbord.aspx.cs">
+      <DependentUpon>stu_emp_dashbord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stu_emp_dashbord.aspx.designer.cs">
+      <DependentUpon>stu_emp_dashbord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="userdetails.aspx.cs">
+      <DependentUpon>userdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userdetails.aspx.designer.cs">
+      <DependentUpon>userdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="useStudetCoupon.aspx.cs">
+      <DependentUpon>useStudetCoupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="useStudetCoupon.aspx.designer.cs">
+      <DependentUpon>useStudetCoupon.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Copy %282%29 of App_Data\" />
+    <Folder Include="Copy of App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27922</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

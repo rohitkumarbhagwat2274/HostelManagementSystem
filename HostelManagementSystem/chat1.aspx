@@ -62,7 +62,7 @@
             <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2">
                 <series>
                     <asp:Series ChartType="Pie" Name="Series1" XValueMember="user_name" 
-                        YValueMembers="date">
+                        YValueMembers="messageid">
                     </asp:Series>
                 </series>
                 <chartareas>
@@ -77,16 +77,18 @@
         <td class="style2" bgcolor="White">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
-                CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Horizontal">
+                CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Horizontal" 
+                DataKeyNames="messageid">
                 <Columns>
-                    <asp:BoundField DataField="user_name" HeaderText="user_name" 
+                    <asp:BoundField DataField="user_name" HeaderText="user_name" ReadOnly="True" 
                         SortExpression="user_name" />
-                    <asp:BoundField DataField="said" HeaderText="said" SortExpression="said" />
+                    <asp:BoundField DataField="said" HeaderText="said" 
+                        SortExpression="said" />
                     <asp:BoundField DataField="send_message" HeaderText="send_message" 
                         SortExpression="send_message" />
-                    <asp:BoundField DataField="group_name" HeaderText="group_name" 
-                        SortExpression="group_name" />
-                    <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
+                    <asp:BoundField DataField="date" HeaderText="date" 
+                        SortExpression="date" />
+                    <asp:CommandField ShowDeleteButton="True" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#333333" />
                 <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
@@ -100,7 +102,29 @@
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:rohitdbConnectionString %>" 
-                SelectCommand="SELECT * FROM [message]">
+                DeleteCommand="DELETE FROM [message] WHERE [messageid] = @messageid" 
+                InsertCommand="INSERT INTO [message] ([user_name], [said], [send_message], [group_name], [date]) VALUES (@user_name, @said, @send_message, @group_name, @date)" 
+                SelectCommand="SELECT * FROM [message]" 
+                
+                UpdateCommand="UPDATE [message] SET [messageid] = @messageid, [user_name], @user_name [said] = @said, [send_message] = @send_message, [group_name] = @group_name, [date] = @date WHERE [messageid] = @messageid">
+                <DeleteParameters>
+                    <asp:Parameter Name="messageid" Type="String" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="user_name" Type="String" />
+                    <asp:Parameter Name="said" Type="String" />
+                    <asp:Parameter Name="send_message" Type="String" />
+                    <asp:Parameter Name="group_name" Type="String" />
+                    <asp:Parameter Name="date" Type="DateTime" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="messageid" Type="Int32" />
+                    <asp:Parameter Name="said" Type="String" />
+                    <asp:Parameter Name="send_message" Type="String" />
+                    <asp:Parameter Name="group_name" Type="String" />
+                    <asp:Parameter Name="date" Type="DateTime" />
+                    <asp:Parameter Name="user_name" Type="String" />
+                </UpdateParameters>
             </asp:SqlDataSource>
             </td>
     </tr>

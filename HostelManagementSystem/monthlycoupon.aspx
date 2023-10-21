@@ -15,6 +15,34 @@
     <form id="form1" runat="server">
         <div>
             <h1>Allote Student Laundry Coupon</h1>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" 
+                CellPadding="3" CellSpacing="2" DataKeyNames="couponid" 
+                DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="Createdbyuserid" HeaderText="Createdbyuserid" 
+                        SortExpression="Createdbyuserid" />
+                    <asp:BoundField DataField="couponNumber" HeaderText="couponNumber" 
+                        SortExpression="couponNumber" />
+                    <asp:BoundField DataField="mfg" HeaderText="mfg" SortExpression="mfg" />
+                    <asp:BoundField DataField="exp" HeaderText="exp" SortExpression="exp" />
+                    <asp:BoundField DataField="rs" HeaderText="rs" SortExpression="rs" />
+                    <asp:BoundField DataField="status" HeaderText="status" 
+                        SortExpression="status" />
+                </Columns>
+                <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+                <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+                <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                <SortedDescendingHeaderStyle BackColor="#93451F" />
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:rohitdbConnectionString %>" 
+                SelectCommand="SELECT * FROM [couponTable]"></asp:SqlDataSource>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">

@@ -86,10 +86,11 @@
                             <asp:Label ID="rs" runat="server" CssClass="form-control-static"></asp:Label>
                             <br />
                             <asp:Image ID="Image1" runat="server" 
-                                ImageUrl="~/ROHIT KUMAR paytm qr code.jpeg" />
+                                ImageUrl="~/ROHIT KUMAR paytm qr code.jpeg" Height="383px" Width="387px" />
                         </div>
                     </div>
                 </div>
+                <asp:Label ID="Active" runat="server" Text="Active" Visible="False"></asp:Label>
             </div>
             <div class="row">
                 <div class="col-xs-12">

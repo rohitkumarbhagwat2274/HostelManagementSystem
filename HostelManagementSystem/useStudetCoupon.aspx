@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
         <div>
             <div class="container">
-                <h1>Buy New Coupon</h1>
+                <h1>Use Coupon</h1>
 
                 <div class="form-group">
                     <label class="col-xs-11">Buyer User Name:</label>
@@ -26,7 +26,12 @@
                 <div class="form-group">
                     <h3><label class="col-xs-11">Coupon Details:</label></h3>
                     <div class="col-xs-11">
+                    <h3>Coupon Provided by Monthly Type</h3>
                         <asp:GridView ID="GridView1" runat="server">
+                        </asp:GridView>
+                        <br />
+                        <h3>Your Perchesed coupon</h3><br />
+                        <asp:GridView ID="GridView2" runat="server">
                         </asp:GridView>
                     </div>
                 </div>
@@ -36,6 +41,8 @@
                     <div class="col-xs-11">
                         <asp:DropDownList ID="ddlCouponNumber" runat="server">
                         </asp:DropDownList>
+                        <asp:DropDownList ID="buycoupon" runat="server">
+                        </asp:DropDownList>
                     </div>
                 </div>
 
@@ -43,6 +50,9 @@
                     <div class="col-xs-11">
                         <asp:Button ID="btnBuyNow" runat="server" Text="Use" CssClass="btn btn-success" OnClick="btnBuyNow_Click" />
                         <asp:Button ID="back" runat="server" Text="Back" CssClass="btn btn-success" OnClick="back_Click" />
+                        <asp:Button ID="usebuycoupon" runat="server" Text="Use buy coupon" 
+                            CssClass="btn btn-success" onclick="usebuycoupon_Click" 
+                            />
                     </div>
                 </div>
             </div>

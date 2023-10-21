@@ -53,7 +53,7 @@ namespace HostelManagementSystem
                 said.Text = "";
                 txtmessage.Text = "";
 
-                Response.Redirect("studentchat.aspx");
+                Response.Redirect("chat1.aspx");
             }
             catch (Exception ex)
             {

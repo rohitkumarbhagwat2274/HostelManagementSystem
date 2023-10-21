@@ -14,6 +14,9 @@ namespace HostelManagementSystem
         SqlConnection con;
         SqlCommand cmd;
         SqlDataReader dr;
+        SqlConnection con1;
+        SqlCommand cmd1;
+        SqlDataReader dr1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +31,7 @@ namespace HostelManagementSystem
                 if (!IsPostBack)
                 {
                     BindCouponNumbers();
+                    GetCouponNumbers();
                 }
 
                 if (username.Text != "")
@@ -41,7 +45,49 @@ namespace HostelManagementSystem
 
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+
+                    if (username.Text != "")
+                    {
+                        con1 = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True");
+                        cmd1 = new SqlCommand("SELECT * FROM buycouponTable WHERE studentemail=@username", con1);
+                        cmd1.Parameters.AddWithValue("@username", username.Text);
+                        SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
+                        DataSet ds1 = new DataSet();
+                        adapter1.Fill(ds1, "buycouponTable");
+
+                        GridView2.DataSource = ds1;
+                        GridView2.DataBind();
+                    }
                 }
+            }
+        }
+
+       
+
+        protected void ddlCouponNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string couponNumber = buycoupon.SelectedItem.Text;
+            
+        }
+
+       
+
+        private void GetCouponNumbers()
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=rohitdb;Integrated Security=True"))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT couponNumber FROM buycouponTable WHERE studentemail=@username", con);
+                cmd.Parameters.AddWithValue("@username", username.Text);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                buycoupon.DataSource = dr;
+                buycoupon.DataTextField = "couponNumber";
+                buycoupon.DataValueField = "couponNumber";
+                buycoupon.DataBind();
+
+                con.Close();
             }
         }
 
@@ -66,12 +112,11 @@ namespace HostelManagementSystem
 
         protected void btnBuyNow_Click(object sender, EventArgs e)
         {
-            string username = Session["username"] as string;
             if (username != null)
             {
                 con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True");
                 cmd = new SqlCommand("UPDATE studentMonthlycouponTable SET status = 'Disabled' WHERE couponNumber = @couponNumber", con);
-                cmd.Parameters.AddWithValue("@couponNumber", ddlCouponNumber.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@couponNumber", buycoupon.SelectedItem.Text);
 
                 try
                 {
@@ -82,7 +127,7 @@ namespace HostelManagementSystem
                     {
                         // Update successful
                         Response.Write("<script>alert('Status updated successfully.');</script>");
-                        Response.Redirect("buyLaundry.aspx");
+                        Response.Redirect("useStudetCoupon.aspx");
                     }
                     else
                     {
@@ -94,16 +139,45 @@ namespace HostelManagementSystem
                 {
                     Response.Write(ex.Message);
                 }
-                finally
-                {
-                    con.Close();
-                }
+                
             }
         }
 
         protected void back_Click(object sender, EventArgs e)
         {
             Response.Redirect("buyLaundry.aspx");
+        }
+
+        protected void usebuycoupon_Click(object sender, EventArgs e)
+        {
+            if (username != null)
+            {
+                con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True");
+                cmd = new SqlCommand("UPDATE buycouponTable SET status = 'Disabled' WHERE couponNumber = @couponNumber", con);
+                cmd.Parameters.AddWithValue("@couponNumber", buycoupon.SelectedItem.Text);
+
+                try
+                {
+                    con.Open();
+                    int rowsUpdated = cmd.ExecuteNonQuery();
+
+                    if (rowsUpdated > 0)
+                    {
+                        // Update successful
+                        Response.Write("<script>alert('Status updated successfully.');</script>");
+                        Response.Redirect("useStudentCoupon.aspx");
+                    }
+                    else
+                    {
+                        // Update failed
+                        Response.Write("<script>alert('Status update failed.');</script>");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
+            }
         }
     }
 }

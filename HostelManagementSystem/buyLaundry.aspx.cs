@@ -16,7 +16,7 @@ namespace HostelManagementSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True");
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["rohitdbConnectionString"].ConnectionString);
             con.Open();
             HttpCookie c = Request.Cookies["mycookie"];
             if (c != null)
@@ -31,7 +31,7 @@ namespace HostelManagementSystem
 
         private void BindCouponNumbers()
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT couponNumber FROM couponTable", con))
+            using (SqlCommand cmd = new SqlCommand("SELECT couponNumber FROM couponTable WHERE status = 'Active'", con))
             {
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -63,64 +63,67 @@ namespace HostelManagementSystem
                 {
                     price = reader["rs"].ToString();
                 }
+                reader.Close();
             }
             return price;
         }
 
         protected void btnBuyNow_Click(object sender, EventArgs e)
         {
-            string username = Session["username"] as string;
+            string username = this.username.Text;
+            string couponNumber = ddlCouponNumber.SelectedItem.Text;
+            string price = rs.Text;
+            string transactionId = GenerateTransactionId();
+
             if (!string.IsNullOrEmpty(username))
             {
-                string couponNumber = ddlCouponNumber.SelectedItem.Text;
-                string price = rs.Text;
-                string transactionId = transid.Text;
-
-                try
+                using (SqlConnection con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True"))
                 {
-                    using (SqlConnection con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=rohitdb;Integrated Security=True"))
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO buycouponTable (studentemail, couponNumber, rs, Transactionid, status) VALUES (@studentEmail, @couponNumber, @rs, @transactionId, @status)", con))
                     {
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("INSERT INTO buycouponTable (studentemail, couponNumber, rs, Transactionid) VALUES (@studentEmail, @couponNumber, @rs, @transactionId)", con);
                         cmd.Parameters.AddWithValue("@studentEmail", username);
                         cmd.Parameters.AddWithValue("@couponNumber", couponNumber);
                         cmd.Parameters.AddWithValue("@rs", price);
                         cmd.Parameters.AddWithValue("@transactionId", transactionId);
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@status",Active.Text);
 
-                        if (rowsAffected > 0)
+                        int rowsInserted = cmd.ExecuteNonQuery();
+
+                        if (rowsInserted > 0)
                         {
-                            SqlCommand cmd1 = new SqlCommand("UPDATE couponTable SET status = 'Disabled' WHERE couponNumber = @couponNumber", con);
-                            cmd1.Parameters.AddWithValue("@couponNumber", couponNumber);
-                            int rowsUpdated = cmd1.ExecuteNonQuery();
+                            cmd.CommandText = "UPDATE couponTable SET status = 'Disabled' WHERE couponNumber = @couponNumber";
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@couponNumber", couponNumber);
+
+                            int rowsUpdated = cmd.ExecuteNonQuery();
 
                             if (rowsUpdated > 0)
                             {
-                                // Success message
-                                Response.Write("<script>alert('Congratulations! Now you can enjoy with your new Laundry coupon.');</script>");
+                                // Update successful
+                                Response.Write("<script>alert('Status updated successfully.');</script>");
+                                Response.Redirect("useStudetCoupon.aspx");
                             }
                             else
                             {
-                                // Failed to update coupon status
-                                Response.Write("<script>alert('Failed to update coupon status.');</script>");
+                                // Update failed
+                                Response.Write("<script>alert('Status update failed.');</script>");
                             }
                         }
                         else
                         {
-                            // Failed to insert into buycouponTable
+                            // Insert failed
                             Response.Write("<script>alert('Failed to insert into buycouponTable.');</script>");
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Log the exception
-                    // You can replace Console.WriteLine with your preferred logging mechanism
-                    Console.WriteLine("Error: " + ex.Message);
-                    Response.Write("<script>alert('An error occurred while processing your request. Please try again later.');</script>");
-                }
             }
         }
 
+        private string GenerateTransactionId()
+        {
+            // Generate a unique transaction ID
+            return Guid.NewGuid().ToString();
+        }
     }
 }

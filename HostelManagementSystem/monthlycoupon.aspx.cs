@@ -55,7 +55,7 @@ namespace HostelManagementSystem
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT couponNumber FROM couponTable", con);
+                SqlCommand cmd = new SqlCommand("SELECT couponNumber FROM couponTable where status = 'Active'", con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 ddlCouponNo.DataSource = dr;
@@ -135,6 +135,11 @@ namespace HostelManagementSystem
 
                 if (rowsAffected > 0)
                 {
+                    // Update the status of the coupon
+                    cmd = new SqlCommand("UPDATE couponTable SET status = 'Disabled' WHERE couponNumber = @couponNumber", con);
+                    cmd.Parameters.AddWithValue("@couponNumber", couponNumber);
+                    cmd.ExecuteNonQuery();
+
                     Response.Write("Coupon inserted successfully");
                 }
                 else
